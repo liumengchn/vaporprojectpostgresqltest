@@ -1,0 +1,26 @@
+
+remote: Resolving deltas: 100% (5/5), completed with 5 local objects.
+To https://github.com/liumengchn/vaporprojectpostgresqltest.git
+7c68f04..15a6d0c  master -> master
+git: https://github.com/liumengchn/vaporprojectpostgresqltest.git
+env: production
+db: yes
+replicas: 1
+replica size: small
+branch: master
+build: incremental
+Creating deployment [Done]
+Connecting to build logs ...
+Waiting in Queue [Done]
+Building vapor (release) [Done]
+Trying to find executable [Done]
+Found executable: Run [Done]
+Creating container registry [Done]
+Building container [Done]
+Pushing container to registry [Done]
+Updating replicas [Done]
+Deployment succeeded: https://vapor-postgresql.vapor.cloud [Done]
+Successfully deployed.
+
+
+
