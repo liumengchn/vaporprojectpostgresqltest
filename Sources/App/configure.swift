@@ -42,34 +42,36 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     var databases = DatabasesConfig()
     
     //3. 本地数据库启用
-//    let databaseConfig = PostgreSQLDatabaseConfig(hostname: "localhost",
-//                                                  port:     5432,
-//                                                  username: "vapor",
-//                                                  database: "vapor",
-//                                                  password: "password")
-//    let database = PostgreSQLDatabase(config: databaseConfig)
-//    databases.add(database: database, as: .psql)
-//    services.register(databases)
-    
-    //4. vapor cloud数据库启用 git commit -am "Use PostgreSQL as the database"  git push
-    let host_name = Environment.get("DATABASE_HOSTNAME") ?? "localhost"
-    let user_name = Environment.get("DATABASE_USER") ?? "vapor"
-    let database_Name = Environment.get("DATABASE_DB") ?? "vapor"
-    let user_password = Environment.get("DATABASE_PASSWORD") ?? "password"
-    
-    let database_config = PostgreSQLDatabaseConfig(hostname: host_name,
-                                                   port: 5432,
-                                                   username: user_name,
-                                                   database: database_Name,
-                                                   password: user_password
+    let databaseConfig = PostgreSQLDatabaseConfig(hostname: "localhost",
+                                                  port:     5432,
+                                                  username: "vapor",
+                                                  database: "vapor"
+//                                                  password: "password"
     )
-    let database = PostgreSQLDatabase(config: database_config)
+    let database = PostgreSQLDatabase(config: databaseConfig)
     databases.add(database: database, as: .psql)
     services.register(databases)
+    
+//    //4. vapor cloud数据库启用 git commit -am "Use PostgreSQL as the database"  git push
+//    let host_name = Environment.get("DATABASE_HOSTNAME") ?? "localhost"
+//    let user_name = Environment.get("DATABASE_USER") ?? "vapor"
+//    let database_Name = Environment.get("DATABASE_DB") ?? "vapor"
+//    let user_password = Environment.get("DATABASE_PASSWORD") ?? "password"
+//
+//    let database_config = PostgreSQLDatabaseConfig(hostname: host_name,
+//                                                   port: 5432,
+//                                                   username: user_name,
+//                                                   database: database_Name,
+//                                                   password: user_password
+//    )
+//    let database = PostgreSQLDatabase(config: database_config)
+//    databases.add(database: database, as: .psql)
+//    services.register(databases)
     
     //4.
     /// Configure migrations 3.
     var migrations = MigrationConfig()
     migrations.add(model: Acronym.self, database: .psql)
     services.register(migrations)
+    
 }
